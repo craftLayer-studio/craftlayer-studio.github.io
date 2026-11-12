@@ -1,0 +1,183 @@
+/* Shared editorial primitives. Brand tokens come from globals.css (--cl-*). */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cl-muted);
+  margin: 0;
+}
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+.eyebrowPlain::before {
+  display: none;
+}
+
+.serif {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Section heading block */
+.sectionHead {
+  display: grid;
+  gap: 16px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+@media (min-width: 900px) {
+  .sectionHead {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: end;
+    gap: 48px;
+  }
+}
+.sectionHeadMain {
+  display: grid;
+  gap: 16px;
+}
+.h2 {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--cl-ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.sectionIntro {
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--cl-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* Page header for inner pages */
+.pageHeader {
+  position: relative;
+  border-bottom: 1px solid var(--cl-line);
+  padding-block: clamp(28px, 4vw, 40px) clamp(48px, 7vw, 88px);
+  overflow: hidden;
+}
+.pageHeaderGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgb(16 24 40 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(16 24 40 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom left, #000 0%, transparent 60%);
+  pointer-events: none;
+}
+.pageHeaderInner {
+  position: relative;
+  display: grid;
+  gap: 24px;
+}
+.crumbs {
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+.h1 {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(2.5rem, 6.4vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  color: var(--cl-ink);
+  margin: 0;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.lead {
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--cl-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* Section spacing */
+.section {
+  padding-block: clamp(64px, 10vw, 128px);
+}
+.sectionRule {
+  border-top: 1px solid var(--cl-line);
+}
+
+/* Inline arrow */
+.arrow {
+  flex: none;
+  transition: transform 180ms ease;
+}
+
+/* Chip list for technologies */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.chip {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--cl-line);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.6);
+  color: #344054;
+  white-space: nowrap;
+}
+
+/* Prose blocks for legal and long-form pages */
+.prose {
+  max-width: 68ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #344054;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--cl-ink);
+  margin: 48px 0 12px;
+  font-weight: 600;
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+.prose p,
+.prose ul {
+  margin: 0 0 16px;
+}
+.prose ul {
+  padding-left: 1.25rem;
+}
+.prose li {
+  margin-bottom: 6px;
+}
+.prose a {
+  color: var(--cl-blue);
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+}

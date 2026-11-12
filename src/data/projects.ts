@@ -96,7 +96,7 @@ export const projects: Project[] = [
     type: 'in-house-product',
     status: 'live',
     summary:
-      '605+ browser tools that process files client-side: no uploads and no server compute. Built and run by the founder.',
+      '600+ browser tools that process files client-side: no uploads and no server compute. Built and run by the founder.',
     technologies: ['JavaScript', 'Static hosting', 'Client-side processing', 'SEO'],
     demoUrl: 'https://sopkit.github.io',
     repoUrl: 'https://github.com/SopKit/sopkit.github.io',
@@ -115,7 +115,7 @@ export const projects: Project[] = [
       problem: 'Server-side file tools cost money to run and ask users to trust a third party with their data.',
       objective: 'Offer a large catalogue of everyday file tools that run entirely in the browser.',
       work: [
-        'Built 605+ single-purpose tools that process files locally in the browser.',
+        'Built 600+ single-purpose tools that process files locally in the browser.',
         'Static hosting with no server compute.',
         'Search-focused page structure so each tool can be found directly.',
       ],

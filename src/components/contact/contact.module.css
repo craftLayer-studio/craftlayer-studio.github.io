@@ -1,0 +1,159 @@
+.form {
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+}
+.row {
+  display: grid;
+  gap: 28px;
+}
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+.field {
+  min-width: 0;
+  scroll-margin-top: 96px;
+}
+
+.summary {
+  border: 2px solid #d92d20;
+  border-radius: 10px;
+  padding: 20px 24px;
+  background: #fff;
+}
+.summary:focus {
+  outline: 3px solid #fda29b;
+  outline-offset: 2px;
+}
+.summaryTitle {
+  margin: 0 0 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #b42318;
+}
+.summaryList {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 6px;
+}
+.summaryList a {
+  color: #b42318;
+  font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+.statusRegion:focus {
+  outline: none;
+}
+.statusRegion:empty {
+  display: none;
+}
+.statusRegion a {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.actions {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+  padding-top: 8px;
+  border-top: 1px solid var(--cl-line);
+}
+.formNote {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--cl-muted);
+}
+
+/* Page layout */
+.layout {
+  display: grid;
+  gap: 56px;
+}
+@media (min-width: 980px) {
+  .layout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 72px;
+  }
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--cl-line);
+  border-radius: 14px;
+  padding: clamp(20px, 4vw, 40px);
+  min-width: 0;
+}
+.aside {
+  display: grid;
+  gap: 32px;
+  align-content: start;
+}
+@media (min-width: 980px) {
+  .aside {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+}
+.asideBlock {
+  display: grid;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--cl-ink);
+}
+.asideBlock h2 {
+  margin: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cl-muted);
+}
+.asideBlock p,
+.asideBlock ol {
+  margin: 0;
+  color: #344054;
+  line-height: 1.6;
+}
+.asideBlock ol {
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 6px;
+}
+.email {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--cl-ink);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--cl-blue);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+.email:focus-visible {
+  outline: 2px solid var(--cl-blue);
+  outline-offset: 4px;
+}
+.asideBlock a:not(.email) {
+  color: var(--cl-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

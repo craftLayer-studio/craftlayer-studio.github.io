@@ -1,0 +1,198 @@
+/* Layouts for inner pages. */
+.split {
+  display: grid;
+  gap: 40px;
+}
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: 64px;
+  }
+}
+.sideLabel {
+  margin: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cl-muted);
+}
+.h2 {
+  margin: 0;
+  font-size: clamp(1.625rem, 3vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--cl-ink);
+  text-wrap: balance;
+}
+.body {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #344054;
+  max-width: 64ch;
+}
+.stack {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.ruled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--cl-line);
+}
+.ruled li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--cl-line);
+  line-height: 1.6;
+  color: #344054;
+}
+.ruled li > span:first-child {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--cl-blue);
+  padding-top: 4px;
+}
+.cols3 {
+  display: grid;
+  gap: 32px;
+}
+@media (min-width: 860px) {
+  .cols3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.col {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding-top: 18px;
+  border-top: 1px solid var(--cl-ink);
+}
+.col h2,
+.col h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--cl-ink);
+}
+.col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 8px;
+  color: #344054;
+  line-height: 1.55;
+}
+.col p {
+  margin: 0;
+  color: #344054;
+  line-height: 1.6;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.notice {
+  border: 1px dashed #b54708;
+  background: #fffaeb;
+  color: #7a2e0e;
+  border-radius: 10px;
+  padding: 16px 20px;
+  line-height: 1.6;
+  max-width: 72ch;
+  margin: 0;
+}
+.founder {
+  display: grid;
+  gap: 32px;
+  padding: clamp(24px, 4vw, 48px);
+  background: #fff;
+  border: 1px solid var(--cl-line);
+  border-radius: 14px;
+}
+@media (min-width: 860px) {
+  .founder {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 56px;
+  }
+}
+.founderName {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--cl-ink);
+}
+.facts {
+  margin: 0;
+  display: grid;
+  border-top: 1px solid var(--cl-line);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: minmax(96px, 1fr) minmax(0, 2fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cl-line);
+}
+.facts dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cl-muted);
+  padding-top: 3px;
+}
+.facts dd {
+  margin: 0;
+  color: var(--cl-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+/* Long URLs inside Astryx links must wrap on 320px screens. */
+.facts dd a,
+.facts dd a * {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  max-width: 100%;
+}
+.facts dd a {
+  display: inline;
+}
+.notFound {
+  padding-block: clamp(64px, 12vw, 160px);
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+.notFoundCode {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  color: var(--cl-blue);
+  margin: 0;
+}
+.col a,
+.body a {
+  color: var(--cl-blue);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
