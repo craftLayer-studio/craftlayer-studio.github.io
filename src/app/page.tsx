@@ -15,11 +15,16 @@ import {
   TechSection,
 } from '@/components/home/sections';
 
-export const metadata = buildMetadata({
-  title: 'Websites, SaaS and AI applications',
-  description: site.description,
-  path: '/',
-});
+export const metadata = {
+  ...buildMetadata({
+    title: 'Websites, SaaS and AI applications',
+    description: site.description,
+    path: '/',
+  }),
+  // Absolute: the root page's title renders without the layout template, so
+  // spell out the full "%s | CraftLayer Studio" form every other page gets.
+  title: {absolute: 'Websites, SaaS and AI applications | CraftLayer Studio'},
+};
 
 export default function Home() {
   return (

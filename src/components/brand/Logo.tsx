@@ -21,7 +21,9 @@ const TONES: Record<Tone, {ink: string; accent: string; studio: string; studioOp
 };
 
 function a11y(title?: string) {
-  return title ? ({role: 'img'} as const) : ({'aria-hidden': true} as const);
+  // Accessible name via aria-label, not an SVG title child: a title element
+  // inside the logo renders a second title tag in the page HTML.
+  return title ? ({role: 'img', 'aria-label': title} as const) : ({'aria-hidden': true} as const);
 }
 
 export function LogoMark({
@@ -43,7 +45,6 @@ export function LogoMark({
       focusable="false"
       {...a11y(title)}
     >
-      {title ? <title>{title}</title> : null}
       <path d={MARK_TOP} fill="currentColor" />
       <path d={MARK_CORE} style={{fill: TONES.auto.accent}} />
       <path d={MARK_BOTTOM} fill="currentColor" />
@@ -73,7 +74,6 @@ export function LogoWordmark({
       focusable="false"
       {...a11y(title)}
     >
-      {title ? <title>{title}</title> : null}
       <path d={MARK_TOP} fill={t.ink} />
       <path d={MARK_CORE} style={{fill: t.accent}} />
       <path d={MARK_BOTTOM} fill={t.ink} />
