@@ -56,4 +56,32 @@ export const industries: Industry[] = [
     needs: ['Credible service websites', 'Enquiry and intake forms', 'Workflow automation'],
     demo: 'halden-rowe',
   },
+  {
+    slug: 'real-estate',
+    name: 'Real estate',
+    summary: 'Estate and letting agents who need listings people can search and compare, and a quick way to book viewings.',
+    needs: ['Searchable, filterable listings', 'Listing detail pages with floor plans', 'Viewing requests and calculators'],
+    demo: 'ashgrove-property',
+  },
+  {
+    slug: 'beauty-wellness',
+    name: 'Beauty & wellness',
+    summary: 'Salons, spas and studios that want their service menu, team and appointment requests to feel as calm as a visit.',
+    needs: ['Service menus with durations and prices', 'Team and specialist profiles', 'Appointment and gift card flows'],
+    demo: 'fernlight-salon',
+  },
+  {
+    slug: 'nonprofit',
+    name: 'Nonprofits',
+    summary: 'Charities and community groups that need clear programmes, simple donation forms and volunteer sign-up.',
+    needs: ['Donation forms with one-off and monthly giving', 'Volunteer shift sign-up', 'Events and help directories'],
+    demo: 'common-table',
+  },
+  {
+    slug: 'ecommerce-retail',
+    name: 'E-commerce & retail',
+    summary: 'Independent shops and makers who need a fast storefront with filters, a clear cart and subscriptions.',
+    needs: ['Filterable product catalogues', 'Cart and checkout flows', 'Subscription builders'],
+    demo: 'brightwater-coffee',
+  },
 ];
