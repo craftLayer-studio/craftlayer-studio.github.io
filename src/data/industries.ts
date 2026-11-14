@@ -40,17 +40,20 @@ export const industries: Industry[] = [
     name: 'Startups',
     summary: 'Founders who need a first product version, a marketing site and an architecture that can grow.',
     needs: ['Scoped first releases', 'Product and marketing sites', 'Edge and serverless infrastructure'],
+    demo: 'pulsegrid',
   },
   {
     slug: 'education',
     name: 'Education',
     summary: 'Student communities, campus tools and event platforms where verification and reliability matter.',
     needs: ['Verified-member communities', 'Event registration and entry', 'Content and resource libraries'],
+    demo: 'quillmark-academy',
   },
   {
     slug: 'professional-services',
     name: 'Professional services',
     summary: 'Consultancies, agencies and firms that need a credible site and tools that cut admin work.',
     needs: ['Credible service websites', 'Enquiry and intake forms', 'Workflow automation'],
+    demo: 'halden-rowe',
   },
 ];

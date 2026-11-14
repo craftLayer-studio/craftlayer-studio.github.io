@@ -51,6 +51,8 @@ export type Project = {
 
 const DEMOS = 'https://craftlayer-studio.github.io/industry-demos';
 const DEMOS_REPO = 'https://github.com/craftLayer-studio/industry-demos';
+const GALLERY = 'https://craftlayer-studio.github.io/landing-gallery/';
+const GALLERY_REPO = 'https://github.com/craftLayer-studio/landing-gallery';
 
 export const projects: Project[] = [
   {
@@ -292,6 +294,62 @@ export const projects: Project[] = [
     screenshot: '/work/northstar-clinic.png',
     evidence: [{label: 'Source repository', href: DEMOS_REPO}],
     featured: true,
+  },
+  {
+    slug: 'pulsegrid',
+    title: 'Pulsegrid',
+    category: 'SaaS landing page',
+    type: 'concept-demo',
+    status: 'concept',
+    summary: 'Fictional analytics SaaS: feature tour, sample-data dashboard, pricing calculator, plan comparison and waitlist form.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Astryx'],
+    demoUrl: `${DEMOS}/saas/`,
+    repoUrl: DEMOS_REPO,
+    screenshot: '/work/pulsegrid.png',
+    evidence: [{label: 'Source repository', href: DEMOS_REPO}],
+    featured: false,
+  },
+  {
+    slug: 'quillmark-academy',
+    title: 'Quillmark Academy',
+    category: 'Education website',
+    type: 'concept-demo',
+    status: 'concept',
+    summary: 'Fictional online academy: filterable course catalogue, curriculum outlines, cohort calendar and enrolment enquiry.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Astryx'],
+    demoUrl: `${DEMOS}/academy/`,
+    repoUrl: DEMOS_REPO,
+    screenshot: '/work/quillmark-academy.png',
+    evidence: [{label: 'Source repository', href: DEMOS_REPO}],
+    featured: false,
+  },
+  {
+    slug: 'halden-rowe',
+    title: 'Halden & Rowe',
+    category: 'Professional services website',
+    type: 'concept-demo',
+    status: 'concept',
+    summary: 'Fictional accounting and advisory firm: practice areas, working fee estimator and a multi-step consultation request.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Astryx'],
+    demoUrl: `${DEMOS}/advisory/`,
+    repoUrl: DEMOS_REPO,
+    screenshot: '/work/halden-rowe.png',
+    evidence: [{label: 'Source repository', href: DEMOS_REPO}],
+    featured: false,
+  },
+  {
+    slug: 'landing-gallery',
+    title: 'Landing page gallery',
+    category: 'Landing page examples',
+    type: 'concept-demo',
+    status: 'concept',
+    summary: 'Six fictional landing pages composed from named section archetypes: pricing toggles, per-use estimators, searchable FAQs and validated forms.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    demoUrl: GALLERY,
+    repoUrl: GALLERY_REPO,
+    screenshot: '/work/landing-gallery.png',
+    evidence: [{label: 'Source repository', href: GALLERY_REPO}],
+    featured: false,
   },
 ];
 

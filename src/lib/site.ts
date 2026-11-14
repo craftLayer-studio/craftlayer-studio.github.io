@@ -14,6 +14,8 @@ export const site = {
   githubOrg: 'https://github.com/craftLayer-studio',
   demosUrl: 'https://craftlayer-studio.github.io/industry-demos/',
   demosRepo: 'https://github.com/craftLayer-studio/industry-demos',
+  galleryUrl: 'https://craftlayer-studio.github.io/landing-gallery/',
+  galleryRepo: 'https://github.com/craftLayer-studio/landing-gallery',
   websiteRepo: 'https://github.com/craftLayer-studio/craftlayer-studio.github.io',
   scriptlyUrl: 'https://scriptly.store/',
   founder: {

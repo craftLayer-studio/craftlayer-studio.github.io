@@ -12,6 +12,6 @@ export const dynamic = 'force-static';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [{userAgent: '*', allow: '/'}],
-    sitemap: [absoluteUrl('/sitemap.xml'), new URL('sitemap.xml', site.demosUrl).toString()],
+    sitemap: [absoluteUrl('/sitemap.xml'), new URL('sitemap.xml', site.demosUrl).toString(), new URL('sitemap.xml', site.galleryUrl).toString()],
   };
 }
