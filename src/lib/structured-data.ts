@@ -63,7 +63,7 @@ export function organizationLd(): JsonLdObject {
     founder: founderLd(),
     areaServed: {'@type': 'Place', name: 'Worldwide'},
     knowsAbout,
-    sameAs: [site.githubOrg],
+    sameAs: [site.githubOrg, site.instagram],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',

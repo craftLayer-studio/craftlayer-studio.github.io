@@ -8,6 +8,7 @@ const year = new Date().getFullYear();
 
 export function SiteFooter() {
   const elsewhere = [
+    {label: `Instagram ${site.instagramHandle}`, href: site.instagram},
     {label: 'GitHub organisation', href: site.githubOrg},
     {label: 'Founder on GitHub', href: site.founder.github},
     {label: 'Scriptly store', href: site.scriptlyUrl},

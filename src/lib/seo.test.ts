@@ -110,6 +110,7 @@ describe('structured data', () => {
     const founder = organizationLd().founder as {name: string; sameAs: string[]};
     expect(founder.name).toBe('Shaswat Raj');
     expect(founder.sameAs).toContain('https://www.linkedin.com/in/sh20raj/');
+    expect(organizationLd().sameAs).toContain('https://www.instagram.com/craftlayer.studio/');
   });
 
   it('dates case study articles', () => {

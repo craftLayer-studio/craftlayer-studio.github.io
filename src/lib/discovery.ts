@@ -18,6 +18,7 @@ export function buildPortfolio() {
       url: absoluteUrl('/'),
       description: site.description,
       github: site.githubOrg,
+      instagram: site.instagram,
       email: site.contactEmail,
       founder: {
         name: site.founder.name,
@@ -105,6 +106,7 @@ export function buildLlmsTxt(): string {
   lines.push(`- [Founder portfolio](${site.founder.portfolio})`);
   lines.push(`- [Evidence index](${site.founder.proof})`);
   lines.push(`- [GitHub organization](${site.githubOrg})`);
+  lines.push(`- [Instagram ${site.instagramHandle}](${site.instagram}): short videos of our work and concept demos`);
   lines.push(`- [Concept demos](${site.demosUrl}): ${projects.filter(p => p.type === 'concept-demo' && p.demoUrl?.startsWith(site.demosUrl)).length} fictional industry websites`);
   lines.push(`- [Concept demos source](${site.demosRepo})`);
   lines.push(`- [Website source](${site.websiteRepo})`);

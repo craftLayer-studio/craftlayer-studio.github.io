@@ -49,6 +49,13 @@ export default function ContactPage() {
               <p>Prefer your own email app? Write to this address with the same details.</p>
             </div>
             <div className={c.asideBlock}>
+              <h2>Message us on Instagram</h2>
+              <a className={c.email} href={site.instagram} target="_blank" rel="noopener noreferrer">
+                {site.instagramHandle}
+              </a>
+              <p>Send a DM with what you want to build. We post short videos of our work there too.</p>
+            </div>
+            <div className={c.asideBlock}>
               <h2>What happens next</h2>
               <ol>
                 <li>The founder reads your enquiry personally.</li>

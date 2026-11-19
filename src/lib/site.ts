@@ -12,6 +12,8 @@ export const site = {
   url: 'https://craftlayer-studio.github.io',
   locale: 'en',
   githubOrg: 'https://github.com/craftLayer-studio',
+  instagram: 'https://www.instagram.com/craftlayer.studio/',
+  instagramHandle: '@craftlayer.studio',
   demosUrl: 'https://craftlayer-studio.github.io/industry-demos/',
   demosRepo: 'https://github.com/craftLayer-studio/industry-demos',
   galleryUrl: 'https://craftlayer-studio.github.io/landing-gallery/',
