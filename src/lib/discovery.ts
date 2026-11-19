@@ -3,8 +3,9 @@
  * /portfolio.json. Served by static route handlers in src/app. Experimental aid:
  * llms.txt is not a search ranking factor. Same facts as the pages, no extra claims.
  */
-import {caseStudies, projects, projectTypeLabel} from '@/data/projects';
+import {caseStudies, contributions, projects, projectTypeLabel} from '@/data/projects';
 import {services} from '@/data/services';
+import {industries} from '@/data/industries';
 import {absoluteUrl, nav, site} from './site';
 
 /** Machine-readable portfolio. Same facts as the Work pages; no extra claims. */
@@ -28,7 +29,17 @@ export function buildPortfolio() {
       },
       products: [{name: 'Scriptly', url: site.scriptlyUrl}],
       demos: site.demosUrl,
+      demosSource: site.demosRepo,
+      websiteSource: site.websiteRepo,
     },
+    industries: industries.map(i => ({
+      slug: i.slug,
+      name: i.name,
+      url: absoluteUrl(`/industries/${i.slug}/`),
+      summary: i.summary,
+      conceptDemo: i.demo ?? null,
+    })),
+    contributions: contributions.map(c => ({label: c.label, url: c.href})),
     projects: projects.map(p => ({
       slug: p.slug,
       title: p.title,
@@ -63,6 +74,13 @@ export function buildLlmsTxt(): string {
   for (const service of services) lines.push(`- [${service.name}](${absoluteUrl(`/services/${service.slug}/`)}): ${service.short}`);
   lines.push('');
 
+  lines.push('## Industries', '');
+  for (const i of industries) {
+    const demo = projects.find(p => p.slug === i.demo);
+    lines.push(`- [${i.seoTitle}](${absoluteUrl(`/industries/${i.slug}/`)}): ${i.summary}${demo ? ` Concept demo: ${demo.title} (fictional).` : ''}`);
+  }
+  lines.push('');
+
   lines.push('## Case studies', '');
   for (const p of caseStudies) lines.push(`- [${p.title}](${absoluteUrl(`/work/${p.slug}/`)}): ${p.summary}`);
   lines.push('');
@@ -74,6 +92,10 @@ export function buildLlmsTxt(): string {
   }
   lines.push('');
 
+  lines.push('## Open-source contributions', '');
+  for (const c of contributions) lines.push(`- [${c.label}](${c.href})`);
+  lines.push('');
+
   lines.push('## Data', '');
   lines.push(`- [portfolio.json](${absoluteUrl('/portfolio.json')}): machine-readable list of projects with type, status, technologies and evidence links`);
   lines.push(`- [Sitemap](${absoluteUrl('/sitemap.xml')})`);
@@ -83,7 +105,10 @@ export function buildLlmsTxt(): string {
   lines.push(`- [Founder portfolio](${site.founder.portfolio})`);
   lines.push(`- [Evidence index](${site.founder.proof})`);
   lines.push(`- [GitHub organization](${site.githubOrg})`);
-  lines.push(`- [Concept demos](${site.demosUrl}): fictional gym, restaurant and clinic sites`);
+  lines.push(`- [Concept demos](${site.demosUrl}): ${projects.filter(p => p.type === 'concept-demo' && p.demoUrl?.startsWith(site.demosUrl)).length} fictional industry websites`);
+  lines.push(`- [Concept demos source](${site.demosRepo})`);
+  lines.push(`- [Website source](${site.websiteRepo})`);
+  lines.push(`- [Process, deliverables and FAQ](${absoluteUrl('/process/')})`);
   lines.push(`- [Scriptly](${site.scriptlyUrl}): in-house product`);
   lines.push('');
   return lines.join('\n');

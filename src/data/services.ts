@@ -9,6 +9,10 @@ export type Service = {
   name: string;
   /** One line for cards and lists. */
   short: string;
+  /** Page title without the site suffix. Keep under 40 characters. */
+  seoTitle: string;
+  /** Meta description, 120-155 characters. */
+  metaDescription: string;
   /** Opening paragraph on the service page. */
   intro: string;
   /** What a typical engagement includes. */
@@ -28,6 +32,9 @@ export const services: Service[] = [
     slug: 'web-development',
     name: 'Web development',
     short: 'Fast, accessible marketing sites and web apps built on Next.js and React.',
+    seoTitle: 'Next.js website development',
+    metaDescription:
+      'Fast, accessible websites and web apps built with Next.js, React and TypeScript, with technical SEO and WCAG 2.2 AA checks as part of the build.',
     intro:
       'Websites that load quickly, read well on any screen and are straightforward to maintain. We build on Next.js and React with TypeScript, and we treat accessibility, performance and search visibility as part of the build rather than an afterthought.',
     deliverables: [
@@ -55,6 +62,9 @@ export const services: Service[] = [
     slug: 'saas-development',
     name: 'SaaS development',
     short: 'From first version to a dependable product: accounts, data, billing-ready foundations.',
+    seoTitle: 'SaaS product development',
+    metaDescription:
+      'SaaS development from first version to dependable product: authentication, a sound data model, background work and an architecture that can grow.',
     intro:
       'Software-as-a-service products need more than screens: authentication, a sound data model, background work, and an architecture that does not need rewriting at the first sign of growth. We help founders get a first version in front of users and keep it stable as it changes.',
     deliverables: [
@@ -82,6 +92,9 @@ export const services: Service[] = [
     slug: 'ai-applications',
     name: 'AI applications',
     short: 'Practical AI features and agent tooling, including Model Context Protocol servers.',
+    seoTitle: 'AI application and MCP development',
+    metaDescription:
+      'Practical AI features and agent tooling, including Model Context Protocol (MCP) servers that let assistants act inside the tools you already use.',
     intro:
       'Useful AI features are mostly careful engineering: clear inputs, predictable outputs and a fallback when the model is wrong. We build AI-assisted features and agent tooling, including MCP servers that let assistants act inside your existing systems.',
     deliverables: [
@@ -108,6 +121,9 @@ export const services: Service[] = [
     slug: 'e-commerce',
     name: 'E-commerce',
     short: 'Storefronts and ordering flows that are quick to browse and clear at checkout.',
+    seoTitle: 'E-commerce website development',
+    metaDescription:
+      'Storefronts, menus and ordering flows that are quick to browse and clear at checkout, integrated with the payment providers you choose.',
     intro:
       'Selling online works best when browsing is fast and the path to purchase is obvious. We design and build storefronts, menus and ordering flows, and integrate them with the payment and fulfilment providers you choose.',
     deliverables: [
@@ -134,6 +150,9 @@ export const services: Service[] = [
     slug: 'business-automation',
     name: 'Business automation',
     short: 'Scheduled jobs, data pipelines and integrations that remove repetitive manual work.',
+    seoTitle: 'Business automation and integrations',
+    metaDescription:
+      'Scheduled jobs, integrations and small internal tools that take over repetitive manual work and tell you when something needs attention.',
     intro:
       'A lot of business time goes into copying data between tools, checking lists and sending the same updates. We build scheduled jobs, integrations and small internal tools that do that work reliably and tell you when something needs attention.',
     deliverables: [
@@ -160,6 +179,9 @@ export const services: Service[] = [
     slug: 'custom-software',
     name: 'Custom software',
     short: 'Purpose-built admin panels, dashboards, event systems and developer tools for problems that off-the-shelf products do not fit well.',
+    seoTitle: 'Custom software development',
+    metaDescription:
+      'Admin panels, real-time dashboards, event systems and developer tools shaped around how you work, built in small increments with code you own.',
     intro:
       'Sometimes the right answer is software shaped exactly around how you work: an admin panel, a real-time dashboard, an event system or a developer tool. We scope these carefully, build them in small increments and hand over code you own.',
     deliverables: [

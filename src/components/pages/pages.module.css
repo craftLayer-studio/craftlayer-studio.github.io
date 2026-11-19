@@ -196,3 +196,130 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Industry detail pages, process deliverables and FAQ. */
+.h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--cl-ink);
+}
+.demoGrid {
+  display: grid;
+  gap: 32px;
+  margin-top: 32px;
+}
+@media (min-width: 900px) {
+  .demoGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 56px;
+    align-items: start;
+  }
+}
+.checkList {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 10px;
+  color: #344054;
+  line-height: 1.6;
+}
+.more {
+  margin: 32px 0 0;
+}
+.more a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--cl-ink);
+  font-weight: 500;
+}
+.linkCards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 700px) {
+  .linkCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.linkCards a {
+  display: grid;
+  gap: 6px;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--cl-line);
+  border-radius: 12px;
+  background: #fff;
+  color: #344054;
+  text-decoration: none;
+  line-height: 1.55;
+}
+.linkCards a:hover {
+  border-color: var(--cl-ink);
+}
+.linkCards a:focus-visible {
+  outline: 2px solid var(--cl-blue);
+  outline-offset: 2px;
+}
+.linkCards strong {
+  color: var(--cl-ink);
+  font-size: 1.0625rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tagLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tagLinks a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--cl-line);
+  border-radius: 999px;
+  color: var(--cl-ink);
+  background: #fff;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.tagLinks a:hover {
+  border-color: var(--cl-ink);
+  text-decoration: underline;
+}
+.tagLinks a:focus-visible {
+  outline: 2px solid var(--cl-blue);
+  outline-offset: 2px;
+}
+.evidence {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+}
+.faq {
+  margin: 0;
+  border-top: 1px solid var(--cl-line);
+  max-width: 820px;
+}
+.faq > div {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--cl-line);
+}
+.faq dt {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cl-ink);
+}
+.faq dd {
+  margin: 0;
+  color: #344054;
+  line-height: 1.65;
+  max-width: 72ch;
+}

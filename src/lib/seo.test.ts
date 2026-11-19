@@ -2,13 +2,33 @@ import {describe, expect, it} from 'vitest';
 import {serializeJsonLd} from '@/components/seo/JsonLd';
 import {buildLlmsTxt, buildPortfolio} from './discovery';
 import {buildMetadata, serviceSlugs, sitePages} from './seo';
-import {articleLd, breadcrumbLd, creativeWorkLd, organizationLd, projectLd, serviceLd, websiteLd} from './structured-data';
+import {
+  articleLd,
+  breadcrumbLd,
+  creativeWorkLd,
+  faqPageLd,
+  itemListLd,
+  organizationLd,
+  projectListLd,
+  projectLd,
+  serviceLd,
+  websiteLd,
+} from './structured-data';
+import {industries} from '@/data/industries';
+import {faqs} from '@/data/process';
 import {caseStudies, projects} from '@/data/projects';
 import {services} from '@/data/services';
 
 const ORIGIN = 'https://craftlayer-studio.github.io';
 
 describe('buildMetadata', () => {
+  it('clamps long descriptions at a word boundary', () => {
+    const long = 'word '.repeat(60).trim();
+    const m = buildMetadata({title: 'T', description: long, path: '/'});
+    expect(String(m.description).length).toBeLessThanOrEqual(155);
+    expect(String(m.description).endsWith('…')).toBe(true);
+  });
+
   it('sets canonical, Open Graph and Twitter fields with absolute URLs', () => {
     const m = buildMetadata({title: 'Work', description: 'Selected work', path: '/work/'});
     expect(m.alternates?.canonical).toBe(`${ORIGIN}/work/`);
@@ -33,6 +53,26 @@ describe('sitePages', () => {
   });
 });
 
+describe('industries', () => {
+  it('has a sitemap entry, unique slug and a valid demo for every industry', () => {
+    const paths = sitePages().map(p => p.path);
+    expect(new Set(industries.map(i => i.slug)).size).toBe(industries.length);
+    for (const i of industries) {
+      expect(paths).toContain(`/industries/${i.slug}/`);
+      if (i.demo) expect(projects.find(p => p.slug === i.demo)?.type).toBe('concept-demo');
+      for (const s of i.services) expect(services.map(x => x.slug)).toContain(s);
+    }
+  });
+
+  it('keeps titles and descriptions within search snippet limits', () => {
+    const suffix = ' | CraftLayer Studio'.length;
+    for (const x of [...industries, ...services]) {
+      expect(x.seoTitle.length + suffix).toBeLessThan(60);
+      expect(x.metaDescription.length).toBeLessThanOrEqual(155);
+    }
+  });
+});
+
 describe('serializeJsonLd', () => {
   it('cannot break out of a script tag', () => {
     const out = serializeJsonLd({'@type': 'Thing', name: '</script><script>alert(1)</script>'});
@@ -50,6 +90,9 @@ describe('structured data', () => {
     breadcrumbLd([{name: 'Home', path: '/'}, {name: 'Work', path: '/work/'}]),
     ...projects.map(projectLd),
     ...caseStudies.map(p => articleLd(p)),
+    projectListLd({name: 'Work', path: '/work/', items: projects}),
+    itemListLd({name: 'Industries', path: '/industries/', items: industries.map(i => ({name: i.name, url: `/industries/${i.slug}/`}))}),
+    faqPageLd(faqs, '/process/'),
   ];
 
   it('never emits ratings or reviews', () => {

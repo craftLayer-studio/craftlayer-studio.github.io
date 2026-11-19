@@ -140,7 +140,12 @@ export function IndustriesList({headingLevel = 3}: {headingLevel?: 2 | 3}) {
             <span className={s.industryIndex} aria-hidden="true">
               {pad(i + 1)}
             </span>
-            <H className={s.industryName}>{ind.name}</H>
+            <H className={s.industryName}>
+              <NextLink href={`/industries/${ind.slug}/`} className={s.industryLink}>
+                {ind.name}
+                <VisuallyHidden> website design</VisuallyHidden>
+              </NextLink>
+            </H>
             <p className={s.industrySummary}>{ind.summary}</p>
             {demo?.demoUrl ? (
               <p className={s.industryDemo}>
@@ -170,9 +175,14 @@ export function IndustriesSection() {
             Built around how your sector <Accent>works.</Accent>
           </>
         }
-        intro="We design for the realities of each sector. For fitness, hospitality and healthcare we have built fictional concept demos so you can try the patterns before we talk."
+        intro="We design for the realities of each sector. For each one we have built a working concept demo for a fictional business, so you can try the patterns before we talk."
       />
       <IndustriesList />
+      <p className={s.moreLink}>
+        <NextLink href="/industries/" className={s.textLink}>
+          All industries and concept demos <ArrowIcon />
+        </NextLink>
+      </p>
     </Section>
   );
 }

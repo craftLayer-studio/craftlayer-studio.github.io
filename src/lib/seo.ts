@@ -1,6 +1,14 @@
 import type {Metadata} from 'next';
 import {absoluteUrl, site} from './site';
 import {caseStudies} from '@/data/projects';
+import {industries} from '@/data/industries';
+
+/** Keeps a meta description within ~155 characters, cutting at a word boundary. */
+export function clampDescription(text: string, max = 155): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,;:.]+$/, '')}…`;
+}
 
 /** Contract used by every page. The SEO workstream may extend, not break, it. */
 export function buildMetadata({
@@ -24,22 +32,23 @@ export function buildMetadata({
   noIndex?: boolean;
 }): Metadata {
   const url = absoluteUrl(path);
+  const desc = clampDescription(description);
   const images = [{url: absoluteUrl(image), width: 1200, height: 630, alt: imageAlt ?? site.name}];
   return {
     title,
-    description,
+    description: desc,
     alternates: {canonical: url},
     robots: noIndex ? {index: false, follow: true} : {index: true, follow: true},
     openGraph: {
       type,
       url,
       title,
-      description,
+      description: desc,
       siteName: site.name,
       locale: 'en_US',
       images,
     },
-    twitter: {card: 'summary_large_image', title, description, images: [absoluteUrl(image)]},
+    twitter: {card: 'summary_large_image', title, description: desc, images: [absoluteUrl(image)]},
   };
 }
 
@@ -65,7 +74,8 @@ export function sitePages(): SitePage[] {
     {path: '/', priority: 1, changeFrequency: 'weekly'},
     {path: '/services/', priority: 0.9, changeFrequency: 'monthly'},
     ...serviceSlugs.map(slug => ({path: `/services/${slug}/`, priority: 0.8, changeFrequency: 'monthly' as const})),
-    {path: '/industries/', priority: 0.7, changeFrequency: 'monthly'},
+    {path: '/industries/', priority: 0.8, changeFrequency: 'monthly'},
+    ...industries.map(i => ({path: `/industries/${i.slug}/`, priority: 0.7, changeFrequency: 'monthly' as const})),
     {path: '/work/', priority: 0.9, changeFrequency: 'monthly'},
     ...caseStudies.map(p => ({path: `/work/${p.slug}/`, priority: 0.8, changeFrequency: 'monthly' as const})),
     {path: '/process/', priority: 0.6, changeFrequency: 'yearly'},

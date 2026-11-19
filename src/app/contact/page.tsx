@@ -10,8 +10,8 @@ import {ContactForm} from '@/components/contact/ContactForm';
 import c from '@/components/contact/contact.module.css';
 
 export const metadata = buildMetadata({
-  title: 'Contact',
-  description: `Start a project with CraftLayer Studio. Send an enquiry or email ${site.contactEmail} directly.`,
+  title: 'Contact: start a website project',
+  description: `Start a website, SaaS or AI project with CraftLayer Studio. Send an enquiry and the founder replies personally, or email ${site.contactEmail}.`,
   path: '/contact/',
 });
 
@@ -55,6 +55,14 @@ export default function ContactPage() {
                 <li>You get a reply with questions or a suggested next step.</li>
                 <li>If it is a fit, we agree a written scope before any work starts.</li>
               </ol>
+            </div>
+            <div className={c.asideBlock}>
+              <h2>Before you write</h2>
+              <p>
+                See <NextLink href="/process/">how we work and what you receive</NextLink>, the{' '}
+                <NextLink href="/process/#faq">answers to common questions</NextLink>, or the{' '}
+                <NextLink href="/industries/">concept demos for your industry</NextLink>.
+              </p>
             </div>
             <div className={c.asideBlock}>
               <h2>Your data</h2>

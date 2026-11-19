@@ -9,7 +9,7 @@ import {Accent, Section} from '@/components/ui/primitives';
 import {ContactCta, ServicesList} from '@/components/home/sections';
 
 export const metadata = buildMetadata({
-  title: 'Services',
+  title: 'Web, SaaS and AI development services',
   description:
     'Web development, SaaS development, AI applications, e-commerce, business automation and custom software, scoped carefully and built in small increments.',
   path: '/services/',

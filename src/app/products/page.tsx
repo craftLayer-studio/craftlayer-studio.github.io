@@ -9,7 +9,7 @@ import {ContactCta, ScriptlyShowcase} from '@/components/home/sections';
 import p from '@/components/pages/pages.module.css';
 
 export const metadata = buildMetadata({
-  title: 'Products',
+  title: 'Products and the Scriptly store',
   description:
     'Scriptly is a separate storefront for ready-to-use digital products, run alongside CraftLayer Studio client work.',
   path: '/products/',

@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import {Button} from '@astryxdesign/core/Button';
 import {Link} from '@astryxdesign/core/Link';
 import {buildMetadata} from '@/lib/seo';
@@ -7,14 +8,14 @@ import {JsonLd} from '@/components/seo/JsonLd';
 import {contributions} from '@/data/projects';
 import {PageShell} from '@/components/layout/PageShell';
 import {PageHeader} from '@/components/ui/PageHeader';
-import {Accent, Eyebrow, Section, SectionHead} from '@/components/ui/primitives';
+import {Accent, ArrowIcon, Eyebrow, Section, SectionHead} from '@/components/ui/primitives';
 import {ContactCta} from '@/components/home/sections';
 import p from '@/components/pages/pages.module.css';
 
 export const metadata = buildMetadata({
-  title: 'About',
+  title: 'About founder Shaswat Raj',
   description:
-    'CraftLayer Studio is founded and run by Shaswat Raj, a software engineer in India. A small, founder-led, engineering-first studio with public evidence for its work.',
+    'CraftLayer Studio is founded and run by Shaswat Raj, a software engineer in India: a small, founder-led studio with public evidence for its work.',
   path: '/about/',
 });
 
@@ -135,6 +136,11 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+        <p className={p.more}>
+          <NextLink href="/process/">
+            Our process, what you receive and common questions <ArrowIcon />
+          </NextLink>
+        </p>
       </Section>
 
       <Section labelledBy="oss-title">

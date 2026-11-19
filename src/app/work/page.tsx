@@ -1,5 +1,5 @@
 import {buildMetadata} from '@/lib/seo';
-import {breadcrumbLd} from '@/lib/structured-data';
+import {breadcrumbLd, projectListLd} from '@/lib/structured-data';
 import {JsonLd} from '@/components/seo/JsonLd';
 import {projects, projectTypeLabel, type ProjectType} from '@/data/projects';
 import {PageShell} from '@/components/layout/PageShell';
@@ -10,9 +10,9 @@ import {ProjectCard} from '@/components/work/ProjectCard';
 import w from '@/components/work/work.module.css';
 
 export const metadata = buildMetadata({
-  title: 'Work',
+  title: 'Work: products, open source and demos',
   description:
-    'In-house products, open-source projects, community work and concept demos, each honestly labelled and linked to its live site and source code.',
+    'In-house products, open-source projects, community work and industry concept demos, each honestly labelled and linked to its live site and source code.',
   path: '/work/',
 });
 
@@ -27,10 +27,13 @@ export default function WorkPage() {
   return (
     <PageShell>
       <JsonLd
-        data={breadcrumbLd([
-          {name: 'Home', path: '/'},
-          {name: 'Work', path: '/work/'},
-        ])}
+        data={[
+          breadcrumbLd([
+            {name: 'Home', path: '/'},
+            {name: 'Work', path: '/work/'},
+          ]),
+          projectListLd({name: 'CraftLayer Studio work', path: '/work/', items: projects}),
+        ]}
       />
       <PageHeader
         crumbs={[{label: 'Work'}]}

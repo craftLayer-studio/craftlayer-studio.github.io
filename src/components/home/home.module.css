@@ -286,6 +286,20 @@
   letter-spacing: -0.025em;
   color: var(--cl-ink);
 }
+.industryLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--cl-line);
+}
+.industryLink:hover {
+  text-decoration-color: currentColor;
+}
+.industryLink:focus-visible {
+  outline: 2px solid var(--cl-blue);
+  outline-offset: 2px;
+}
 .industrySummary {
   margin: 0;
   color: #475467;

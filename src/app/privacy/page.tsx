@@ -10,7 +10,7 @@ import {Prose, Section} from '@/components/ui/primitives';
 export const metadata = buildMetadata({
   title: 'Privacy notice',
   description:
-    'How the CraftLayer Studio website handles data: no analytics, no cookies, self-hosted fonts, and contact form details sent only by email or a form provider.',
+    'How the CraftLayer Studio website handles data: no analytics, no cookies, self-hosted fonts, and contact details sent only by email or a form provider.',
   path: '/privacy/',
 });
 

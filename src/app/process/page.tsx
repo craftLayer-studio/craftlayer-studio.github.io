@@ -1,5 +1,10 @@
+import NextLink from 'next/link';
+import {Link} from '@astryxdesign/core/Link';
 import {buildMetadata} from '@/lib/seo';
-import {breadcrumbLd} from '@/lib/structured-data';
+import {site} from '@/lib/site';
+import {breadcrumbLd, faqPageLd} from '@/lib/structured-data';
+import {contributions} from '@/data/projects';
+import {deliverables, faqs} from '@/data/process';
 import {JsonLd} from '@/components/seo/JsonLd';
 import {PageShell} from '@/components/layout/PageShell';
 import {PageHeader} from '@/components/ui/PageHeader';
@@ -8,9 +13,9 @@ import {ContactCta, ProcessList} from '@/components/home/sections';
 import p from '@/components/pages/pages.module.css';
 
 export const metadata = buildMetadata({
-  title: 'Process',
+  title: 'How we work: process and deliverables',
   description:
-    'How CraftLayer Studio works: Discover, Plan, Design, Build, Validate, Deploy and Improve, with working software on staging early and often.',
+    'How CraftLayer Studio works, from first call to launch: seven steps, what you receive, how quality is checked, and answers to common questions.',
   path: '/process/',
 });
 
@@ -24,10 +29,13 @@ export default function ProcessPage() {
   return (
     <PageShell>
       <JsonLd
-        data={breadcrumbLd([
-          {name: 'Home', path: '/'},
-          {name: 'Process', path: '/process/'},
-        ])}
+        data={[
+          breadcrumbLd([
+            {name: 'Home', path: '/'},
+            {name: 'Process', path: '/process/'},
+          ]),
+          faqPageLd(faqs, '/process/'),
+        ]}
       />
       <PageHeader
         crumbs={[{label: 'Process'}]}
@@ -53,6 +61,96 @@ export default function ProcessPage() {
             </div>
           ))}
         </div>
+      </Section>
+      <Section labelledBy="deliverables-title" id="deliverables">
+        <SectionHead
+          label="What you receive"
+          id="deliverables-title"
+          title="Standards every project ships with"
+          intro="Described through practices you can already inspect in our public repositories, not promises."
+        />
+        <div className={p.cols3}>
+          {deliverables.map(d => (
+            <div key={d.title} className={p.col}>
+              <h3>{d.title}</h3>
+              <p>{d.body}</p>
+              {d.evidence ? (
+                <p className={p.evidence}>
+                  <Link href={d.evidence.href} isExternalLink>
+                    {d.evidence.label}
+                  </Link>
+                </p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </Section>
+      <Section labelledBy="verify-title">
+        <div className={p.split}>
+          <div className={p.stack}>
+            <p className={p.sideLabel}>Check before you contact us</p>
+            <h2 id="verify-title" className={p.h2}>
+              Evidence you can verify
+            </h2>
+            <p className={p.body}>
+              There are no client logos or testimonials on this site because we only show what can be checked. These are
+              public. The industry demos are fictional concept sites, labelled as such on every page.
+            </p>
+          </div>
+          <ul className={p.ruled}>
+            <li>
+              <span aria-hidden="true">01</span>
+              <span>
+                <Link href={site.demosRepo} isExternalLink>
+                  Source code of all the industry concept demos
+                </Link>
+              </span>
+            </li>
+            <li>
+              <span aria-hidden="true">02</span>
+              <span>
+                <Link href={site.websiteRepo} isExternalLink>
+                  Source code of this website
+                </Link>
+              </span>
+            </li>
+            <li>
+              <span aria-hidden="true">03</span>
+              <span>
+                <Link href={site.founder.proof} isExternalLink>
+                  The founder&apos;s evidence index for published metrics
+                </Link>
+              </span>
+            </li>
+            {contributions.map((c, i) => (
+              <li key={c.href}>
+                <span aria-hidden="true">{String(i + 4).padStart(2, '0')}</span>
+                <span>
+                  <Link href={c.href} isExternalLink>
+                    {c.label}
+                  </Link>
+                </span>
+              </li>
+            ))}
+            <li>
+              <span aria-hidden="true">{String(contributions.length + 4).padStart(2, '0')}</span>
+              <span>
+                <NextLink href="/about/">Who runs the studio, with public profile links</NextLink>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </Section>
+      <Section labelledBy="faq-title" id="faq">
+        <SectionHead label="Questions" id="faq-title" title="Common questions" />
+        <dl className={p.faq}>
+          {faqs.map(f => (
+            <div key={f.question}>
+              <dt>{f.question}</dt>
+              <dd>{f.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
       <ContactCta />
     </PageShell>

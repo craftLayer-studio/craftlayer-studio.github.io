@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
 import {buildMetadata} from '@/lib/seo';
 import {site} from '@/lib/site';
+import {projects} from '@/data/projects';
 import {breadcrumbLd} from '@/lib/structured-data';
 import {JsonLd} from '@/components/seo/JsonLd';
 import {PageShell} from '@/components/layout/PageShell';
@@ -22,7 +23,7 @@ export default function TermsPage() {
           {name: 'Terms', path: '/terms/'},
         ])}
       />
-      <PageHeader crumbs={[{label: 'Terms'}]} eyebrow="Legal / Last updated 12 November 2026" title="Terms of use" />
+      <PageHeader crumbs={[{label: 'Terms'}]} eyebrow="Legal / Last updated 19 November 2026" title="Terms of use" />
       <Section rule={false}>
         <Prose>
           <h2>About these terms</h2>
@@ -33,9 +34,9 @@ export default function TermsPage() {
 
           <h2>Concept demos are fictional</h2>
           <p>
-            Forge Fitness, Juniper Kitchen and Northstar Clinic are fictional brands created to demonstrate design and
-            engineering patterns. They are not real businesses or client projects. Their menus, timetables, people,
-            prices and forms are illustrative: no booking, order or appointment made there is real, and their forms do
+            The concept demos ({projects.filter(pr => pr.type === 'concept-demo').map(pr => pr.title).join(', ')}) are
+            fictional brands created to demonstrate design and engineering patterns. They are not real businesses or client projects. Their menus, timetables, people,
+            prices and forms are illustrative: no booking, order, appointment, donation or enquiry made there is real, and their forms do
             not send data anywhere.
           </p>
 

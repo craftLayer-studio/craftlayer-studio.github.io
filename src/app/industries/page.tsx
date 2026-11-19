@@ -1,5 +1,6 @@
 import {buildMetadata} from '@/lib/seo';
-import {breadcrumbLd} from '@/lib/structured-data';
+import {breadcrumbLd, itemListLd} from '@/lib/structured-data';
+import {industries} from '@/data/industries';
 import {JsonLd} from '@/components/seo/JsonLd';
 import {projects} from '@/data/projects';
 import {PageShell} from '@/components/layout/PageShell';
@@ -11,31 +12,39 @@ import w from '@/components/work/work.module.css';
 import p from '@/components/pages/pages.module.css';
 
 export const metadata = buildMetadata({
-  title: 'Industries',
+  title: 'Website design by industry',
   description:
-    'Websites and software for fitness, restaurants and hospitality, healthcare, startups, education and professional services, with clearly labelled concept demos.',
+    'Website design for gyms, restaurants, clinics, law firms, hotels, builders, salons, charities and more, each with a working, clearly labelled concept demo.',
   path: '/industries/',
 });
 
 export default function IndustriesPage() {
   const concepts = projects.filter(pr => pr.type === 'concept-demo');
+  const demoNames = industries.map(i => (i.demo ? projects.find(pr => pr.slug === i.demo)?.title : undefined)).filter(Boolean);
   return (
     <PageShell>
       <JsonLd
-        data={breadcrumbLd([
-          {name: 'Home', path: '/'},
-          {name: 'Industries', path: '/industries/'},
-        ])}
+        data={[
+          breadcrumbLd([
+            {name: 'Home', path: '/'},
+            {name: 'Industries', path: '/industries/'},
+          ]),
+          itemListLd({
+            name: 'Industries CraftLayer Studio designs for',
+            path: '/industries/',
+            items: industries.map(i => ({name: i.seoTitle, url: `/industries/${i.slug}/`, description: i.summary})),
+          }),
+        ]}
       />
       <PageHeader
         crumbs={[{label: 'Industries'}]}
-        eyebrow="Industries / Six sectors"
+        eyebrow={`Industries / ${industries.length} sectors`}
         title={
           <>
             Designed for how your sector <Accent>works.</Accent>
           </>
         }
-        lead="Each sector has its own patterns: timetables, menus, appointment requests, verified communities. We design for those realities rather than forcing a generic template."
+        lead="Each sector has its own patterns: timetables, menus, appointment requests, listings, fee estimators. We design for those realities rather than forcing a generic template, and each sector has a working concept demo you can try."
       />
       <Section rule={false} labelledBy="sectors-title">
         <SectionHead label="Sectors" id="sectors-title" title="Who we design for" />
@@ -46,10 +55,10 @@ export default function IndustriesPage() {
           label="Concept demonstrations"
           id="concepts-title"
           title="Try the patterns before we talk"
-          intro="Three working demo sites for fictional businesses."
+          intro={`${concepts.length} working demo sites for fictional businesses, each with public source code.`}
         />
         <p className={p.notice} style={{marginBottom: 32}}>
-          Forge Fitness, Juniper Kitchen and Northstar Clinic are fictional brands built by CraftLayer Studio to
+          {demoNames.join(', ')} and the landing page gallery are fictional brands built by CraftLayer Studio to
           demonstrate industry patterns. They are not real businesses or client projects, and their forms do not send
           data anywhere.
         </p>

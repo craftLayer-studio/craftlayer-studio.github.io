@@ -198,3 +198,65 @@ export function articleLd(project: Project, {datePublished = CASE_STUDY_DATE}: {
     keywords: project.technologies.join(', '),
   };
 }
+
+export type ListEntry = {name: string; url: string; description?: string};
+
+/**
+ * ItemList for a page that lists things (work, industries). `url` may be an
+ * absolute external URL or a site path.
+ */
+export function itemListLd({name, path, items}: {name: string; path: string; items: ListEntry[]}): JsonLdObject {
+  return {
+    '@context': CONTEXT,
+    '@type': 'ItemList',
+    '@id': absoluteUrl(`${path}#list`),
+    name,
+    url: absoluteUrl(path),
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: item.url.startsWith('http') ? item.url : absoluteUrl(item.url),
+      ...(item.description ? {description: item.description} : {}),
+    })),
+  };
+}
+
+/** ItemList whose entries are the projects themselves (CreativeWork / SoftwareApplication). */
+export function projectListLd({name, path, items}: {name: string; path: string; items: Project[]}): JsonLdObject {
+  return {
+    '@context': CONTEXT,
+    '@type': 'ItemList',
+    '@id': absoluteUrl(`${path}#list`),
+    name,
+    url: absoluteUrl(path),
+    numberOfItems: items.length,
+    itemListElement: items.map((project, index) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const {'@context': _ctx, ...item} = projectLd(project);
+      return {'@type': 'ListItem', position: index + 1, item};
+    }),
+  };
+}
+
+export type FaqEntry = {question: string; answer: string};
+
+/** FAQPage. Only use on a page that visibly shows these exact questions and answers. */
+export function faqPageLd(faqs: FaqEntry[], path: string): JsonLdObject {
+  return {
+    '@context': CONTEXT,
+    '@type': 'FAQPage',
+    '@id': absoluteUrl(`${path}#faq`),
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {'@type': 'Answer', text: f.answer},
+    })),
+  };
+}
+
+/** Service page for an industry, offered by the studio. */
+export function industryServiceLd({name, description, path}: {name: string; description: string; path: string}): JsonLdObject {
+  return serviceLd({name, description, path, serviceType: 'Website design and development'});
+}

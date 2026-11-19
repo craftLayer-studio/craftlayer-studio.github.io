@@ -5,6 +5,7 @@ import {breadcrumbLd, serviceLd} from '@/lib/structured-data';
 import {JsonLd} from '@/components/seo/JsonLd';
 import {getService, services} from '@/data/services';
 import {getProject} from '@/data/projects';
+import {industries} from '@/data/industries';
 import {PageShell} from '@/components/layout/PageShell';
 import {PageHeader} from '@/components/ui/PageHeader';
 import {ArrowIcon, Section, SectionHead, TechChips} from '@/components/ui/primitives';
@@ -23,7 +24,7 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
   const {slug} = await params;
   const sv = getService(slug);
   if (!sv) return {};
-  return buildMetadata({title: sv.name, description: sv.short, path: `/services/${sv.slug}/`});
+  return buildMetadata({title: sv.seoTitle, description: sv.metaDescription, path: `/services/${sv.slug}/`});
 }
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -35,6 +36,7 @@ export default async function ServicePage({params}: {params: Promise<{slug: stri
   const index = services.findIndex(x => x.slug === sv.slug);
   const related = sv.related.map(getProject).filter(x => x !== undefined);
   const path = `/services/${sv.slug}/`;
+  const sectors = industries.filter(i => i.services.includes(sv.slug));
 
   return (
     <PageShell>
@@ -123,6 +125,23 @@ export default async function ServicePage({params}: {params: Promise<{slug: stri
               All services <ArrowIcon />
             </NextLink>
           </p>
+        </Section>
+      ) : null}
+      {sectors.length ? (
+        <Section labelledBy="sectors-title">
+          <SectionHead
+            label="Industries"
+            id="sectors-title"
+            title={`${sv.name} by industry`}
+            intro="Sector pages explain what each kind of business usually needs, with a working concept demo to try."
+          />
+          <ul className={p.tagLinks}>
+            {sectors.map(i => (
+              <li key={i.slug}>
+                <NextLink href={`/industries/${i.slug}/`}>{i.seoTitle}</NextLink>
+              </li>
+            ))}
+          </ul>
         </Section>
       ) : null}
       <ContactCta />

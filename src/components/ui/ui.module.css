@@ -173,6 +173,7 @@
 }
 .prose a {
   color: var(--cl-blue);
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 
