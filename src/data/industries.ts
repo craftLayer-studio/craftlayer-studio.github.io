@@ -84,4 +84,32 @@ export const industries: Industry[] = [
     needs: ['Filterable product catalogues', 'Cart and checkout flows', 'Subscription builders'],
     demo: 'brightwater-coffee',
   },
+  {
+    slug: 'legal',
+    name: 'Law firms',
+    summary: 'Solicitors and legal practices that need clear practice areas, transparent fixed fees and a confidential way to get in touch.',
+    needs: ['Practice area pages', 'Fixed-fee estimators', 'Confidential enquiry forms'],
+    demo: 'marlowe-pike',
+  },
+  {
+    slug: 'hospitality',
+    name: 'Hotels & hospitality',
+    summary: 'Boutique hotels and B&Bs that want to show rooms beautifully and take booking requests without heavy third-party widgets.',
+    needs: ['Room collections with filters', 'Availability and rate calculators', 'Booking request flows'],
+    demo: 'the-saltmarsh',
+  },
+  {
+    slug: 'architecture',
+    name: 'Architects & interiors',
+    summary: 'Practices whose portfolio is the pitch: a project archive that loads fast and a structured way to start a brief.',
+    needs: ['Filterable project archives', 'Process and fee explainers', 'Multi-step brief forms'],
+    demo: 'ostrander-studio',
+  },
+  {
+    slug: 'construction',
+    name: 'Builders & trades',
+    summary: 'Builders and renovators who need to explain services and rough costs clearly and turn visitors into site survey requests.',
+    needs: ['Service pages', 'Cost estimators', 'Survey and quote requests'],
+    demo: 'keystone-build',
+  },
 ];
