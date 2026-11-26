@@ -1,4 +1,4 @@
-# Build, verify and deploy the static export to GitHub Pages: org Pages site (https://craftlayer-studio.github.io/).
+# Build, verify and deploy the static export to GitHub Pages: org Pages site served at https://craftlayer.store/ (custom domain).
 # Any failing check stops the run before the deploy job, so the live site stays unchanged.
 # Repository setting required: Settings > Pages > Source = GitHub Actions.
 name: Deploy to GitHub Pages

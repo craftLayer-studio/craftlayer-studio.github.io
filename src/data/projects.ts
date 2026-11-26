@@ -49,9 +49,9 @@ export type Project = {
   };
 };
 
-const DEMOS = 'https://craftlayer-studio.github.io/industry-demos';
+const DEMOS = 'https://craftlayer.store/industry-demos';
 const DEMOS_REPO = 'https://github.com/craftLayer-studio/industry-demos';
-const GALLERY = 'https://craftlayer-studio.github.io/landing-gallery/';
+const GALLERY = 'https://craftlayer.store/landing-gallery/';
 const GALLERY_REPO = 'https://github.com/craftLayer-studio/landing-gallery';
 
 export const projects: Project[] = [

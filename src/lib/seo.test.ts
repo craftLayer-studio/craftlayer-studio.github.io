@@ -19,7 +19,7 @@ import {faqs} from '@/data/process';
 import {caseStudies, projects} from '@/data/projects';
 import {services} from '@/data/services';
 
-const ORIGIN = 'https://craftlayer-studio.github.io';
+const ORIGIN = 'https://craftlayer.store';
 
 describe('buildMetadata', () => {
   it('clamps long descriptions at a word boundary', () => {

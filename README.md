@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://craftlayer-studio.github.io/">
+  <a href="https://craftlayer.store/">
     <img src="public/brand/logo-horizontal.svg" alt="CraftLayer Studio" height="48">
   </a>
 </p>
 
 # CraftLayer Studio website
 
-Source for **https://craftlayer-studio.github.io/**, the website of CraftLayer Studio, a founder-led digital product engineering studio. We turn ideas into digital products: websites, SaaS products, AI applications, e-commerce, dashboards and internal tools.
+Source for **https://craftlayer.store/**, the website of CraftLayer Studio, a founder-led digital product engineering studio. We turn ideas into digital products: websites, SaaS products, AI applications, e-commerce, dashboards and internal tools.
 
 The site is a Next.js App Router application exported to static HTML and deployed to GitHub Pages by GitHub Actions.
 
@@ -87,13 +87,19 @@ Logo files live in `public/brand/` (sources and exports in the workspace's `bran
 
 ## Custom domain
 
-The site currently uses `https://craftlayer-studio.github.io/`. No custom domain is configured and no `CNAME` file exists. To add one later:
+The site is served at **https://craftlayer.store/** through GitHub Pages (Actions deployment, so there is no `CNAME` file). The old `https://craftlayer-studio.github.io/` URLs redirect to it, and so do the organisation's project sites: `https://craftlayer.store/industry-demos/` and `https://craftlayer.store/landing-gallery/`.
 
-1. Verify the domain for the organization (GitHub → Organization settings → Pages → Verified domains).
-2. Add DNS records: `A`/`AAAA` records for the apex pointing to GitHub Pages' published IPs, or a `CNAME` for a subdomain pointing to `craftlayer-studio.github.io`.
-3. Set the custom domain in the repository's Pages settings (with Actions deployments, no `CNAME` file is needed) and enable **Enforce HTTPS** once the certificate is issued.
-4. Update `site.url` in `src/lib/site.ts`. Canonical URLs, Open Graph URLs, the sitemap, robots.txt, JSON-LD and llms.txt all derive from it.
-5. Redeploy, then confirm the certificate, canonical tags and that the old `github.io` URLs redirect.
+DNS is on Cloudflare (zone `craftlayer.store`). Keep these records **DNS only** (grey cloud) so GitHub can issue and renew the TLS certificate:
+
+| Type | Name | Content |
+|---|---|---|
+| `A` | `craftlayer.store` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| `AAAA` | `craftlayer.store` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| `CNAME` | `www` | `craftlayer-studio.github.io` |
+
+Product apps use subdomains (`https://<product>.craftlayer.store`, for example `dineloop.craftlayer.store`). They are hosted separately and do not change these records.
+
+`site.url` in `src/lib/site.ts` is the canonical origin. Canonical URLs, Open Graph URLs, the sitemap, robots.txt, JSON-LD and llms.txt all derive from it. To change the domain again, update DNS, the repository's Pages custom domain and `site.url` together, then redeploy and confirm the certificate and redirects.
 
 ## Contributing
 

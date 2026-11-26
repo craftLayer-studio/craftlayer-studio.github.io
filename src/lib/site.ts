@@ -8,15 +8,15 @@ export const site = {
   tagline: 'We turn ideas into digital products.',
   description:
     'CraftLayer Studio designs and engineers websites, SaaS products and AI-powered applications for founders and growing businesses.',
-  // Canonical origin. Change only after a custom domain is verified (see README).
-  url: 'https://craftlayer-studio.github.io',
+  // Canonical origin: custom domain on GitHub Pages (see README, Custom domain).
+  url: 'https://craftlayer.store',
   locale: 'en',
   githubOrg: 'https://github.com/craftLayer-studio',
   instagram: 'https://www.instagram.com/craftlayer.studio/',
   instagramHandle: '@craftlayer.studio',
-  demosUrl: 'https://craftlayer-studio.github.io/industry-demos/',
+  demosUrl: 'https://craftlayer.store/industry-demos/',
   demosRepo: 'https://github.com/craftLayer-studio/industry-demos',
-  galleryUrl: 'https://craftlayer-studio.github.io/landing-gallery/',
+  galleryUrl: 'https://craftlayer.store/landing-gallery/',
   galleryRepo: 'https://github.com/craftLayer-studio/landing-gallery',
   websiteRepo: 'https://github.com/craftLayer-studio/craftlayer-studio.github.io',
   scriptlyUrl: 'https://scriptly.store/',
